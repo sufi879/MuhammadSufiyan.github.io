@@ -665,30 +665,45 @@
   // });
 
   // Modal JavaScript
+ // Modal JavaScript - Improved version
+document.addEventListener('DOMContentLoaded', function() {
   var modal = document.getElementById("imageModal");
   var modalImg = document.getElementById("modalImage");
   var captionText = document.getElementById("caption");
+  var closeBtn = document.getElementsByClassName("close-modal-btn")[0];
   
-  document.querySelectorAll('.portfolio-item .image-container img').forEach(item => {
-    item.onclick = function(){
+  // Attach click handlers to all portfolio images
+  document.querySelectorAll('.portfolio-item img').forEach(item => {
+    item.addEventListener('click', function() {
       modal.style.display = "block";
       modalImg.src = this.src;
-      captionText.innerHTML = this.alt; // Use alt text for caption
+      captionText.innerHTML = this.alt;
+      document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+    });
+  });
+
+  // Close modal when clicking the X button
+  closeBtn.addEventListener('click', function() { 
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // Re-enable scrolling
+  });
+
+  // Close modal when clicking outside the image
+  modal.addEventListener('click', function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto"; // Re-enable scrolling
     }
   });
 
-  var span = document.getElementsByClassName("close-modal-btn")[0];
-
-  span.onclick = function() { 
-    modal.style.display = "none";
-  }
-
-  // Close modal if user clicks outside the image
-  modal.onclick = function(event) {
-    if (event.target == modal) { // Check if the click is on the modal background itself
-        modal.style.display = "none";
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto"; // Re-enable scrolling
     }
-  }
+  });
+});
 
 </script>
 </body>
