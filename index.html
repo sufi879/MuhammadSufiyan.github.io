@@ -2,110 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Sufiyan | Futuristic Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhammad Sufiyan | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      background: #0b0c10;
+      color: #c5c6c7;
       font-family: 'Roboto', sans-serif;
-      color: #e0e0e0;
+      line-height: 1.6;
     }
+
     header {
       text-align: center;
-      padding: 50px 20px;
-      background: radial-gradient(circle at center, #1e1e2f, #0f0f1f);
-      border-bottom: 2px solid #00ffe0;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #0b0c10, #1f2833);
     }
+
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.5em;
+      font-size: 3em;
       margin: 0;
-      color: #00ffe0;
-      text-shadow: 0 0 10px #00ffe0;
+      color: #66fcf1;
+      animation: glow 2s ease-in-out infinite alternate;
     }
+
     header p {
+      color: #45a29e;
       font-size: 1.2em;
-      color: #aaa;
+      margin-top: 10px;
     }
+
     section {
-      max-width: 900px;
-      margin: 30px auto;
-      background: rgba(20, 20, 30, 0.8);
-      border-radius: 10px;
-      padding: 20px;
-      border: 1px solid #00ffe0;
-      box-shadow: 0 0 20px #00ffe050;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
+
     h2 {
       font-family: 'Orbitron', sans-serif;
-      color: #00ffe0;
-      border-bottom: 1px solid #00ffe0;
-      padding-bottom: 5px;
+      color: #66fcf1;
+      border-left: 4px solid #66fcf1;
+      padding-left: 10px;
+      margin-bottom: 20px;
     }
+
+    p, li {
+      font-size: 1em;
+    }
+
     .skills, .languages, .software {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
+
     .skill-item {
-      background: #00ffe010;
-      border: 1px solid #00ffe0;
-      padding: 8px 12px;
+      border: 1px solid #45a29e;
+      background: rgba(69, 162, 158, 0.1);
+      padding: 6px 12px;
       border-radius: 5px;
-      text-shadow: 0 0 5px #00ffe0;
     }
-    .contact a {
-      color: #00ffe0;
-      text-decoration: none;
+
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
-    .contact a:hover {
-      text-decoration: underline;
+
+    .portfolio-item {
+      background: #1f2833;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform 0.3s;
     }
-    ul {
-      padding-left: 20px;
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
     }
-    li {
-      margin-bottom: 8px;
+
+    .portfolio-item img {
+      width: 100%;
+      display: block;
+      border-radius: 5px;
     }
+
+    .portfolio-item p {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #66fcf1;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      color: #666;
-      border-top: 1px solid #00ffe0;
-      margin-top: 40px;
+      color: #888;
     }
-    .glow {
-      animation: glow 2s ease-in-out infinite alternate;
+
+    a {
+      color: #66fcf1;
+      text-decoration: none;
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     @keyframes glow {
-      from { text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0; }
-      to { text-shadow: 0 0 20px #00ffe0, 0 0 30px #00ffe0; }
+      from { text-shadow: 0 0 10px #66fcf1; }
+      to { text-shadow: 0 0 20px #66fcf1; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1 class="glow">Muhammad Sufiyan</h1>
+  <h1>Muhammad Sufiyan</h1>
   <p>Software Engineer | .NET | Power BI | ERP Integration</p>
 </header>
 
-<section>
-  <h2>Profile</h2>
-  <p>I am a highly motivated and results-driven professional with a Bachelor’s degree in ERP from the Karachi Institute of Economics and Technology. With a solid foundation in programming and extensive experience in ERP integration, HCM products, and Power BI, I am eager to contribute my technical expertise to a dynamic organization.</p>
+<section class="fade-in">
+  <h2>About Me</h2>
+  <p>I am a highly motivated and results-driven professional with a Bachelor’s degree in ERP from the Karachi Institute of Economics and Technology. I have strong programming foundations and rich experience in ERP integrations, HCM products, and Power BI dashboards for business intelligence. I am passionate about delivering quality solutions and collaborating with global clients.</p>
 </section>
 
-<section class="contact">
-  <h2>Contact</h2>
-  <p>Phone: 0300-3532945</p>
-  <p>Email: <a href="mailto:m.sufiyanyousuf@gmail.com">m.sufiyanyousuf@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/sufiyan-yousuf-7596b7234/" target="_blank">View Profile</a></p>
-</section>
-
-<section>
+<section class="fade-in">
   <h2>Skills</h2>
   <div class="skills">
     <div class="skill-item">SQL</div>
@@ -120,7 +158,7 @@
   </div>
 </section>
 
-<section>
+<section class="fade-in">
   <h2>Languages</h2>
   <div class="languages">
     <div class="skill-item">C#</div>
@@ -133,7 +171,7 @@
   </div>
 </section>
 
-<section>
+<section class="fade-in">
   <h2>Software</h2>
   <div class="software">
     <div class="skill-item">Android Studio</div>
@@ -146,46 +184,49 @@
   </div>
 </section>
 
-<section>
-  <h2>Education</h2>
-  <p><strong>Karachi Institute of Economics and Technology</strong><br/>
-  Bachelor of Science – Enterprise Resource Planning (Aug 2020 – July 2024)</p>
+<section class="fade-in">
+  <h2>Portfolio</h2>
+  <div class="portfolio">
+    <div class="portfolio-item">
+      <img src="images/CPI Power BI.png" alt="CPI Power BI">
+      <p>CPI Power BI</p>
+    </div>
+    <div class="portfolio-item">
+      <img src="images/EHCM Website.png" alt="EHCM Website">
+      <p>EHCM Website</p>
+    </div>
+    <div class="portfolio-item">
+      <img src="images/HR Payroll PowerBI.png" alt="HR Payroll PowerBI">
+      <p>HR Payroll PowerBI</p>
+    </div>
+    <div class="portfolio-item">
+      <img src="images/jamjoom power bi.png" alt="Jamjoom Power BI">
+      <p>Jamjoom Power BI</p>
+    </div>
+    <div class="portfolio-item">
+      <img src="images/Kinan Power BI.png" alt="Kinan Power BI">
+      <p>Kinan Power BI</p>
+    </div>
+    <div class="portfolio-item">
+      <img src="images/KKF Power BI.png" alt="KKF Power BI">
+      <p>KKF Power BI</p>
+    </div>
+    <div class="portfolio-item">
+      <img src="images/Mudir App.png" alt="Mudir App">
+      <p>Mudir App</p>
+    </div>
+    <div class="portfolio-item">
+      <img src="images/MXL Gatekeepr Website.png" alt="MXL Gatekeepr Website">
+      <p>MXL Gatekeepr Website</p>
+    </div>
+  </div>
 </section>
 
-<section>
-  <h2>Experience</h2>
-  <p><strong>Evincible Solutions Pvt Ltd.</strong><br/>
-  Software Engineer – .NET/EHCM (Nov 2023 – Present)</p>
-  <ul>
-    <li>Collaborate with clients to resolve website issues and optimize solutions.</li>
-    <li>Lead development of new updates for EHCM and Mobile app solutions.</li>
-    <li>Build custom solutions and integrations with Microsoft ERP (Business Central, F&O, CRM).</li>
-    <li>Develop Power BI dashboards for ERP systems.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Projects</h2>
-  <ul>
-    <li><strong>Techno Trek (Final Year Project)</strong> - Computer Store Management System using .NET MAUI.</li>
-    <li><strong>eHCM Pro</strong> - Automated daily HR activities with .NET MVC.</li>
-    <li><strong>ZATCA POS System</strong> - POS system with .NET CORE Blazor.</li>
-    <li><strong>AUI Shopify Migration</strong> - Shopify integration with Business Central.</li>
-    <li><strong>Mudir Mobile App</strong> - HR mobile app with Microsoft Business Central integration.</li>
-    <li><strong>MXL Gatekeeper</strong> - WMS on .NET MVC integrated with Finance & Operations.</li>
-    <li><strong>Kindasa Sales Portal</strong> - Angular 19 frontend with .NET backend.</li>
-    <li><strong>Zoom Info CRM</strong> - .NET console utilities for CRM data import.</li>
-    <li><strong>Power BI Projects</strong> - Multiple dashboards for KKF, Kinan, Janjoom, CPI.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Certifications</h2>
-  <ul>
-    <li>Course on Python (July 2023) – Coursera</li>
-    <li>Microsoft Fabric Analytics Engineer Associate (Nov 2024)</li>
-    <li>Microsoft Fabric Data Engineer Associate (June 2025)</li>
-  </ul>
+<section class="fade-in">
+  <h2>Contact</h2>
+  <p>Phone: 0300-3532945</p>
+  <p>Email: <a href="mailto:m.sufiyanyousuf@gmail.com">m.sufiyanyousuf@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/sufiyan-yousuf-7596b7234/" target="_blank">Connect on LinkedIn</a></p>
 </section>
 
 <footer>
