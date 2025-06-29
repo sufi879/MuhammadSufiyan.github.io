@@ -39,6 +39,67 @@
         z-index: 0;
     }
 
+    /* Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1000; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+    
+    /* Add Animation */
+    @keyframes zoom {
+      from {transform:scale(0)}
+      to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close-modal-btn {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close-modal-btn:hover,
+    .close-modal-btn:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+
 
     header h1 {
       font-family: 'Orbitron', sans-serif;
@@ -287,9 +348,9 @@
     }
 
     /* Interactive cursor - basic example */
-    body {
-        /* cursor: none; /* Hide default cursor - uncomment if using a fully custom cursor */
-    }
+    /* body {
+        cursor: none; 
+    } */
     .custom-cursor { /* This would be a div you add to the body, controlled by JS */
         position: fixed;
         left: 0;
@@ -496,6 +557,13 @@
 <!-- Font Awesome for icons - Ensure this is the latest version or your preferred version -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<!-- Image Modal HTML -->
+<div id="imageModal" class="modal">
+  <span class="close-modal-btn">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="caption"></div>
+</div>
+
 <!-- Scripts for futuristic elements -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
@@ -595,6 +663,32 @@
   //     el.addEventListener('mouseover', () => cursor.classList.add('hovered'));
   //     el.addEventListener('mouseout', () => cursor.classList.remove('hovered'));
   // });
+
+  // Modal JavaScript
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  var captionText = document.getElementById("caption");
+  
+  document.querySelectorAll('.portfolio-item .image-container img').forEach(item => {
+    item.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt; // Use alt text for caption
+    }
+  });
+
+  var span = document.getElementsByClassName("close-modal-btn")[0];
+
+  span.onclick = function() { 
+    modal.style.display = "none";
+  }
+
+  // Close modal if user clicks outside the image
+  modal.onclick = function(event) {
+    if (event.target == modal) { // Check if the click is on the modal background itself
+        modal.style.display = "none";
+    }
+  }
 
 </script>
 </body>
