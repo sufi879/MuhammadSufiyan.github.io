@@ -673,11 +673,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalImg = document.getElementById('modalImage');
     const captionText = document.getElementById('caption');
     const closeBtn = document.querySelector('.close-modal-btn');
-    
-    if (!modal) console.error('Modal element not found!');
-    if (!modalImg) console.error('Modal image element not found!');
-    if (!captionText) console.error('Caption element not found!');
-    
     // Event delegation for portfolio items
     document.querySelector('.portfolio').addEventListener('click', function(e) {
       // Find the clicked image
