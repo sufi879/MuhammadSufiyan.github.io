@@ -8,120 +8,276 @@
   <style>
     body {
       margin: 0;
-      background: #0b0c10;
-      color: #c5c6c7;
-      font-family: 'Roboto', sans-serif;
+      background: #1a1a2e; /* Dark blue-purple */
+      color: #e0e0e0; /* Light gray for text */
+      font-family: 'Montserrat', sans-serif; /* Modern sans-serif font */
       line-height: 1.6;
     }
 
     header {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, #0b0c10, #1f2833);
+      text-align: center;a
+      padding: 120px 20px 80px 20px; /* Increased top padding, added bottom padding */
+      background: linear-gradient(135deg, #16222a, #3a6073); /* Darker gradient */
+      position: relative; /* For potential pseudo-elements or animations */
+      overflow: hidden; /* To contain any decorative elements */
     }
+    
+    /* Optional: Add a subtle pattern or animated background to header */
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            linear-gradient(45deg, rgba(22, 34, 42, 0.1) 25%, transparent 25%, transparent 75%, rgba(22, 34, 42, 0.1) 75%),
+            linear-gradient(45deg, rgba(22, 34, 42, 0.1) 25%, transparent 25%, transparent 75%, rgba(22, 34, 42, 0.1) 75%);
+        background-size: 60px 60px;
+        background-position: 0 0, 30px 30px;
+        opacity: 0.3;
+        z-index: 0;
+    }
+
 
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 3em;
+      font-size: 4em; /* Even larger for more impact */
       margin: 0;
-      color: #66fcf1;
-      animation: glow 2s ease-in-out infinite alternate;
+      color: #00bcd4; /* Vibrant cyan */
+      text-shadow: 0 0 15px #00bcd4, 0 0 25px #00bcd4, 0 0 35px rgba(0,188,212,0.5); /* Enhanced glow */
+      animation: pulse 2s infinite;
+      position: relative; /* Ensure h1 is above pseudo-elements */
+      z-index: 1;
     }
 
     header p {
-      color: #45a29e;
-      font-size: 1.2em;
-      margin-top: 10px;
+      color: #b0bec5; /* Lighter gray for subtitle */
+      font-size: 1.4em; /* Slightly larger */
+      margin-top: 20px; /* Increased margin */
+      position: relative; /* Ensure p is above pseudo-elements */
+      z-index: 1;
+    }
+
+    .container { /* New wrapper for sections */
+      max-width: 1100px; 
+      margin: 0 auto; /* Center the container */
+      padding: 0 20px;
     }
 
     section {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+      /* max-width: 1100px; /* Slightly wider */ /*Remove, handled by .container*/
+      margin: 60px 0; /* Adjusted margin for sections within container */
+      padding: 40px 0; /* Increased vertical padding for sections */
+      border-bottom: 1px solid rgba(0, 188, 212, 0.15); /* Slightly more visible separator */
+    }
+    .container > section:last-of-type { /* More specific selector to remove border from the last section INSIDE .container */
+        border-bottom: none;
     }
 
     h2 {
       font-family: 'Orbitron', sans-serif;
-      color: #66fcf1;
-      border-left: 4px solid #66fcf1;
-      padding-left: 10px;
-      margin-bottom: 20px;
+      color: #00bcd4; /* Vibrant cyan */
+      border-left: 5px solid #00bcd4; /* Thicker border */
+      padding-left: 15px;
+      margin-bottom: 25px;
+      font-size: 2.2em; /* Larger section titles */
     }
 
     p, li {
-      font-size: 1em;
+      font-size: 1.1em; /* Slightly larger body text */
+      color: #c5c6c7; /* Ensuring body text color consistency */
+    }
+    
+    section p, section li { /* More specific selector for paragraph and list items within sections */
+        margin-bottom: 15px; /* Add some space below paragraphs and list items */
     }
 
     .skills, .languages, .software {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px; /* Increased gap */
+      margin-top: 20px; /* Add space above the skill items container */
     }
 
     .skill-item {
-      border: 1px solid #45a29e;
-      background: rgba(69, 162, 158, 0.1);
-      padding: 6px 12px;
-      border-radius: 5px;
+      border: 1px solid #0077b6; /* Accent blue for border */
+      background: rgba(0, 119, 182, 0.15); /* Semi-transparent accent blue */
+      padding: 10px 18px; /* Further increased padding for a chunkier look */
+      border-radius: 8px; /* More rounded corners */
+      color: #ade8f4; /* Lighter text color for skill items */
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      font-weight: 500; /* Slightly bolder skill text */
+    }
+
+    .skill-item:hover {
+      background-color: rgba(0, 119, 182, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 119, 182, 0.3); /* Add shadow on hover for depth */
     }
 
     .portfolio {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger items for better detail */
+      gap: 30px; /* Increased gap */
     }
 
     .portfolio-item {
-      background: #1f2833;
-      padding: 10px;
-      border-radius: 5px;
+      background: #2c3e50; /* Darker blue-gray for portfolio items */
+      border-radius: 12px; /* More rounded corners */
       overflow: hidden;
-      transition: transform 0.3s;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; /* Smoother, bouncier transition */
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      position: relative; /* For overlay effect */
     }
-
-    .portfolio-item:hover {
-      transform: translateY(-5px);
+    
+    .portfolio-item .image-container { /* New container for image to control aspect ratio and hover effect */
+        width: 100%;
+        padding-top: 75%; /* Aspect ratio 4:3, adjust as needed */
+        position: relative;
+        overflow: hidden;
     }
 
     .portfolio-item img {
       width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure image covers the container */
+      position: absolute;
+      top: 0;
+      left: 0;
       display: block;
-      border-radius: 5px;
+      border-radius: 12px 12px 0 0; /* Rounded corners only at the top */
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05); /* Slight zoom on hover */
+    }
+    
+    .portfolio-item-content { /* Container for text below image */
+        padding: 20px;
     }
 
     .portfolio-item p {
       text-align: center;
-      margin-top: 10px;
-      font-size: 0.95em;
-      color: #66fcf1;
+      margin-top: 0; /* Adjusted margin as content is now in its own div */
+      font-size: 1.1em; /* Slightly larger text */
+      color: #00bcd4; /* Vibrant cyan for portfolio text */
+      font-weight: 600; /* Bolder text */
+    }
+    
+    /* Optional: Overlay effect on hover */
+    .portfolio-item .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 188, 212, 0.7);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        border-radius: 12px; /* Match item's border radius */
+    }
+    .portfolio-item:hover .overlay {
+        opacity: 1;
+    }
+    .overlay h3 {
+        margin: 0;
+        font-family: 'Orbitron', sans-serif;
+    }
+     .overlay p { /* Style for text within overlay if any */
+        font-size: 0.9em;
+        color: #e0e0e0;
+        padding: 0 10px;
     }
 
-    footer {
+
+    .contact-info p { /* Style for contact info lines */
+        margin-bottom: 15px; /* Increased bottom margin */
+        display: flex; /* Align icon and text */
+        align-items: center;
+        font-size: 1.15em; /* Slightly larger contact text */
+    }
+    .contact-info i { /* Style for contact icons */
+        margin-right: 12px; /* Increased space between icon and text */
+        color: #00bcd4; /* Icon color to match accent */
+        font-size: 1.3em; /* Slightly larger icons */
+        width: 25px; /* Ensure icons align well if they have different widths */
+        text-align: center;
+    }
+    .contact-info a { /* Specific styling for links in contact info */
+        color: #ade8f4; /* Lighter link color for better readability */
+    }
+    .contact-info a:hover {
+        color: #fff; /* Brighter on hover */
+    }
+
+
+    .site-footer { /* Renamed footer to .site-footer for specificity */
       text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #888;
+      padding: 50px 20px; /* Further increased padding */
+      font-size: 1em; /* Slightly larger footer text */
+      color: #b0bec5; /* Adjusted footer text color */
+      background: linear-gradient(135deg, #10181f, #1a2a38); /* Subtle gradient for footer */
+      margin-top: 80px; /* Increased space above the footer */
+      border-top: 1px solid rgba(0, 188, 212, 0.2); /* Top border for separation */
+    }
+    .footer-links {
+        margin-top: 15px; /* Increased margin */
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Space between links */
+    }
+    .footer-links a {
+        margin: 0; /* Removed individual margin, using gap now */
+        color: #00bcd4; /* Accent color for footer links */
+        font-weight: 500; /* Slightly bolder */
+        transition: color 0.3s, text-shadow 0.3s;
+    }
+    .footer-links a:hover {
+        color: #fff; /* White on hover */
+        text-shadow: 0 0 5px #00bcd4; /* Glow effect on hover */
     }
 
     a {
-      color: #66fcf1;
+      color: #00bcd4; /* Vibrant cyan for links */
       text-decoration: none;
+      transition: color 0.3s;
     }
 
     a:hover {
-      text-decoration: underline;
+      color: #80deea; /* Lighter cyan on hover */
+      text-decoration: none; /* No underline for a cleaner look */
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #66fcf1; }
-      to { text-shadow: 0 0 20px #66fcf1; }
+    @keyframes pulse { /* Changed glow to pulse for a more subtle effect */
+      0% { text-shadow: 0 0 15px #00bcd4; }
+      50% { text-shadow: 0 0 25px #00bcd4; }
+      100% { text-shadow: 0 0 15px #00bcd4; }
     }
+    
+    /* Adding Montserrat and Orbitron fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@500;700&display=swap');
 
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s forwards;
+      transform: translateY(30px); /* Increased initial Y offset for a more noticeable animation */
+      animation: fadeInUp 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards; /* Smoother easing */
     }
+    
+    /* Staggered fade-in for sections */
+    section.fade-in:nth-child(1) { animation-delay: 0.2s; }
+    section.fade-in:nth-child(2) { animation-delay: 0.4s; }
+    section.fade-in:nth-child(3) { animation-delay: 0.6s; }
+    section.fade-in:nth-child(4) { animation-delay: 0.8s; }
+    section.fade-in:nth-child(5) { animation-delay: 1.0s; }
+    section.fade-in:nth-child(6) { animation-delay: 1.2s; }
+
 
     @keyframes fadeInUp {
       to {
@@ -129,109 +285,317 @@
         transform: translateY(0);
       }
     }
+
+    /* Interactive cursor - basic example */
+    body {
+        /* cursor: none; /* Hide default cursor - uncomment if using a fully custom cursor */
+    }
+    .custom-cursor { /* This would be a div you add to the body, controlled by JS */
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #00bcd4;
+        border-radius: 50%;
+        pointer-events: none; /* So it doesn't interfere with other elements */
+        transform: translate(-50%, -50%);
+        transition: width 0.2s, height 0.2s, border-color 0.2s;
+        z-index: 9999;
+    }
+    .custom-cursor.hovered { /* Class to add when hovering over interactive elements */
+        width: 30px;
+        height: 30px;
+        border-color: #fff;
+    }
+
+
   </style>
 </head>
 <body>
+<!-- Particle.js container (optional) -->
+<div id="particles-js" style="position: fixed; width: 100%; height: 100%; z-index: -1;"></div>
 
 <header>
   <h1>Muhammad Sufiyan</h1>
   <p>Software Engineer | .NET | Power BI | ERP Integration</p>
 </header>
 
-<section class="fade-in">
-  <h2>About Me</h2>
-  <p>I am a highly motivated and results-driven professional with a Bachelor’s degree in ERP from the Karachi Institute of Economics and Technology. I have strong programming foundations and rich experience in ERP integrations, HCM products, and Power BI dashboards for business intelligence. I am passionate about delivering quality solutions and collaborating with global clients.</p>
-</section>
+<div class="container"> <!-- Added container to wrap sections -->
+  <section class="fade-in" id="about">
+    <h2>About Me</h2>
+    <p>I am a highly motivated and results-driven professional with a Bachelor’s degree in ERP from the Karachi Institute of Economics and Technology. I have strong programming foundations and rich experience in ERP integrations, HCM products, and Power BI dashboards for business intelligence. I am passionate about delivering quality solutions and collaborating with global clients.</p>
+  </section>
 
-<section class="fade-in">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill-item">SQL</div>
-    <div class="skill-item">Azure</div>
-    <div class="skill-item">.NET/.NET CORE</div>
-    <div class="skill-item">Power BI</div>
-    <div class="skill-item">Shopify Management</div>
-    <div class="skill-item">.NET MAUI/Blazor</div>
-    <div class="skill-item">Angular</div>
-    <div class="skill-item">Power Automate</div>
-    <div class="skill-item">Canvas apps</div>
+  <section class="fade-in" id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-item">SQL</div>
+      <div class="skill-item">Azure</div>
+      <div class="skill-item">.NET/.NET CORE</div>
+      <div class="skill-item">Power BI</div>
+      <div class="skill-item">Shopify Management</div>
+      <div class="skill-item">.NET MAUI/Blazor</div>
+      <div class="skill-item">Angular</div>
+      <div class="skill-item">Power Automate</div>
+      <div class="skill-item">Canvas apps</div>
+    </div>
+  </section>
+
+  <section class="fade-in" id="languages">
+    <h2>Languages</h2>
+    <div class="languages">
+      <div class="skill-item">C#</div>
+      <div class="skill-item">Python</div>
+      <div class="skill-item">JavaScript</div>
+      <div class="skill-item">React JS</div>
+      <div class="skill-item">Liquid</div>
+      <div class="skill-item">TypeScript</div>
+      <div class="skill-item">M Language</div>
+    </div>
+  </section>
+
+  <section class="fade-in" id="software">
+    <h2>Software</h2>
+    <div class="software">
+      <div class="skill-item">Android Studio</div>
+      <div class="skill-item">Visual Studio</div>
+      <div class="skill-item">SQL Server Management Studio</div>
+      <div class="skill-item">SQLite DB Browser</div>
+      <div class="skill-item">Microsoft Power BI</div>
+      <div class="skill-item">Shopify</div>
+      <div class="skill-item">Microsoft Dynamics CRM</div>
+    </div>
+  </section>
+
+  <section class="fade-in" id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/CPI Power BI.jpg" alt="CPI Power BI">
+        </div>
+        <div class="portfolio-item-content">
+          <p>CPI Power BI</p>
+        </div>
+        <div class="overlay">
+          <h3>CPI Power BI</h3>
+          <p>Detailed Power BI dashboard for CPI analysis.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/EHCM Website.jpg" alt="EHCM Website">
+        </div>
+        <div class="portfolio-item-content">
+          <p>EHCM Website</p>
+        </div>
+        <div class="overlay">
+          <h3>EHCM Website</h3>
+          <p>Enterprise Human Capital Management website.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/HR Payroll PowerBI.jpg" alt="HR Payroll PowerBI">
+        </div>
+        <div class="portfolio-item-content">
+          <p>HR Payroll PowerBI</p>
+        </div>
+        <div class="overlay">
+          <h3>HR Payroll PowerBI</h3>
+          <p>Power BI solution for HR and Payroll.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/jamjoom power bi.jpg" alt="Jamjoom Power BI">
+        </div>
+        <div class="portfolio-item-content">
+          <p>Jamjoom Power BI</p>
+        </div>
+        <div class="overlay">
+          <h3>Jamjoom Power BI</h3>
+          <p>Business Intelligence for Jamjoom Group.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/Kinan Power BI.jpg" alt="Kinan Power BI">
+        </div>
+        <div class="portfolio-item-content">
+          <p>Kinan Power BI</p>
+        </div>
+        <div class="overlay">
+          <h3>Kinan Power BI</h3>
+          <p>Power BI dashboards for Kinan.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/KKF Power BI.jpg" alt="KKF Power BI">
+        </div>
+        <div class="portfolio-item-content">
+          <p>KKF Power BI</p>
+        </div>
+        <div class="overlay">
+          <h3>KKF Power BI</h3>
+          <p>King Khalid Foundation Power BI reports.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/Mudir App.jpg" alt="Mudir App">
+        </div>
+        <div class="portfolio-item-content">
+          <p>Mudir App</p>
+        </div>
+        <div class="overlay">
+          <h3>Mudir App</h3>
+          <p>Mobile application for property management.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="image-container">
+          <img src="Images/MXL Gatekeepr Website.jpg" alt="MXL Gatekeepr Website">
+        </div>
+        <div class="portfolio-item-content">
+          <p>MXL Gatekeepr Website</p>
+        </div>
+        <div class="overlay">
+          <h3>MXL Gatekeepr</h3>
+          <p>Gatekeeper system website for MXL.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fade-in" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info"> 
+        <p><i class="fas fa-phone-alt"></i> Phone: 0300-3532945</p> <!-- Changed icon for consistency -->
+        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:m.sufiyanyousuf@gmail.com">m.sufiyanyousuf@gmail.com</a></p>
+        <p><i class="fab fa-linkedin-in"></i> LinkedIn: <a href="https://www.linkedin.com/in/sufiyan-yousuf-7596b7234/" target="_blank">Connect on LinkedIn</a></p> <!-- Changed icon for consistency -->
+    </div>
+  </section>
+  <section class="fade-in" style="border-bottom: none;"> <!-- Remove border from last section -->
+    <!-- Potentially add a call to action or a final thought here -->
+  </section>
+</div> <!-- End of .container -->
+
+<footer class="site-footer"> <!-- Added class for specific footer styling -->
+  <div class="container">
+    <p>&copy; 2025 Muhammad Sufiyan | All Rights Reserved</p>
+    <div class="footer-links">
+        <a href="#about">About</a> | 
+        <a href="#portfolio">Portfolio</a> | 
+        <a href="#contact">Contact</a>
+    </div>
   </div>
-</section>
-
-<section class="fade-in">
-  <h2>Languages</h2>
-  <div class="languages">
-    <div class="skill-item">C#</div>
-    <div class="skill-item">Python</div>
-    <div class="skill-item">JavaScript</div>
-    <div class="skill-item">React JS</div>
-    <div class="skill-item">Liquid</div>
-    <div class="skill-item">TypeScript</div>
-    <div class="skill-item">M Language</div>
-  </div>
-</section>
-
-<section class="fade-in">
-  <h2>Software</h2>
-  <div class="software">
-    <div class="skill-item">Android Studio</div>
-    <div class="skill-item">Visual Studio</div>
-    <div class="skill-item">SQL Server Management Studio</div>
-    <div class="skill-item">SQLite DB Browser</div>
-    <div class="skill-item">Microsoft Power BI</div>
-    <div class="skill-item">Shopify</div>
-    <div class="skill-item">Microsoft Dynamics CRM</div>
-  </div>
-</section>
-
-<section class="fade-in">
-  <h2>Portfolio</h2>
-  <div class="portfolio">
-    <div class="portfolio-item">
-      <img src="Images/CPI Power BI.jpg" alt="CPI Power BI">
-      <p>CPI Power BI</p>
-    </div>
-    <div class="portfolio-item">
-      <img src="Images/EHCM Website.jpg" alt="EHCM Website">
-      <p>EHCM Website</p>
-    </div>
-    <div class="portfolio-item">
-      <img src="Images/HR Payroll PowerBI.jpg" alt="HR Payroll PowerBI">
-      <p>HR Payroll PowerBI</p>
-    </div>
-    <div class="portfolio-item">
-      <img src="Images/jamjoom power bi.jpg" alt="Jamjoom Power BI">
-      <p>Jamjoom Power BI</p>
-    </div>
-    <div class="portfolio-item">
-      <img src="Images/Kinan Power BI.jpg" alt="Kinan Power BI">
-      <p>Kinan Power BI</p>
-    </div>
-    <div class="portfolio-item">
-      <img src="Images/KKF Power BI.jpg" alt="KKF Power BI">
-      <p>KKF Power BI</p>
-    </div>
-    <div class="portfolio-item">
-      <img src="Images/Mudir App.jpg" alt="Mudir App">
-      <p>Mudir App</p>
-    </div>
-    <div class="portfolio-item">
-      <img src="Images/MXL Gatekeepr Website.jpg" alt="MXL Gatekeepr Website">
-      <p>MXL Gatekeepr Website</p>
-    </div>
-  </div>
-</section>
-
-<section class="fade-in">
-  <h2>Contact</h2>
-  <p>Phone: 0300-3532945</p>
-  <p>Email: <a href="mailto:m.sufiyanyousuf@gmail.com">m.sufiyanyousuf@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/sufiyan-yousuf-7596b7234/" target="_blank">Connect on LinkedIn</a></p>
-</section>
-
-<footer>
-  &copy; 2025 Muhammad Sufiyan | All Rights Reserved
 </footer>
+<!-- Font Awesome for icons - Ensure this is the latest version or your preferred version -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<!-- Scripts for futuristic elements -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  // Initialize Particles.js
+  if (document.getElementById('particles-js')) {
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80, // Number of particles
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#00bcd4" // Particle color
+        },
+        "shape": {
+          "type": "circle", // Shape of particles
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false
+          }
+        },
+        "size": {
+          "value": 3, // Size of particles
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00bcd4", // Line color
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2, // Speed of particles
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab" // Interaction mode on hover
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push" // Interaction mode on click
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "push": {
+            "particles_nb": 4 // Number of particles to push
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  }
+
+  // Custom cursor logic (optional, basic)
+  // const cursor = document.createElement('div');
+  // cursor.classList.add('custom-cursor');
+  // document.body.appendChild(cursor);
+
+  // document.addEventListener('mousemove', e => {
+  //     cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+  // });
+
+  // document.addEventListener('click', () => {
+  //     cursor.classList.add("expand");
+  //     setTimeout(() => {
+  //         cursor.classList.remove("expand");
+  //     }, 500)
+  // });
+
+  // // Add hover effects for interactive elements
+  // const interactiveElements = document.querySelectorAll('a, button, .skill-item, .portfolio-item');
+  // interactiveElements.forEach(el => {
+  //     el.addEventListener('mouseover', () => cursor.classList.add('hovered'));
+  //     el.addEventListener('mouseout', () => cursor.classList.remove('hovered'));
+  // });
+
+</script>
 </body>
 </html>
