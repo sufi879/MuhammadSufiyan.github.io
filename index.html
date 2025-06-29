@@ -668,7 +668,6 @@
  // Modal JavaScript - Improved version
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded - initializing modal');
     
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
@@ -685,7 +684,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const img = e.target.closest('.portfolio-item')?.querySelector('img');
       
       if (img) {
-        console.log('Portfolio item clicked:', img.src);
         modal.style.display = 'block';
         modalImg.src = img.src;
         captionText.textContent = img.alt;
@@ -708,10 +706,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Debug: Log all portfolio images
-    const images = document.querySelectorAll('.portfolio-item img');
-    console.log(`Found ${images.length} portfolio images`);
-    images.forEach(img => console.log(img.src));
-  });
+
 
 </script>
 </body>
